@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>@0bstined </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="icone.png">
+</head>
+
+<body>
+  <audio id="musica" loop>
+    <source src="NEMZZZ - DOOM (OFFICIAL AUDIO).mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="coracoes">
+    <span class="coracao" style="left: 5%"></span>
+    <span class="coracao" style="left: 10%"></span>
+    <span class="coracao" style="left: 20%"></span>
+    <span class="coracao" style="left: 30%"></span>
+    <span class="coracao" style="left: 35%"></span>
+    <span class="coracao" style="left: 40%"></span>
+    <span class="coracao" style="left: 45%"></span>
+    <span class="coracao" style="left: 50%"></span>
+    <span class="coracao" style="left: 70%"></span>
+    <span class="coracao" style="left: 90%"></span>
+  </div>
+
+  <div class="baloes">
+    <span class="balao" style="left: 20%"></span>
+    <span class="balao" style="left: 50%"></span>
+    <span class="balao" style="left: 80%"></span>
+  </div>
+
+  <div class="perguntas" id="tela-perguntas">
+    <div class="pergunta" id="pergunta1">
+      <h2>Você tá preparada?</h2>
+      <button onclick="mostrarProxima('pergunta2')">Sim</button>
+      <button onclick="mostrarProxima('pergunta1')">Não</button>
+    </div>
+    <div class="pergunta" id="pergunta2" style="display:none;">
+      <h2>Certeza mesmo?</h2>
+      <button onclick="mostrarProxima('pergunta3')">Sim</button>
+      <button onclick="mostrarProxima('pergunta3')">Claro</button>
+    </div>
+    <div class="pergunta" id="pergunta3" style="display:none;">
+      <h2>Você gosta do vini?</h2>
+      <button onclick="mostrarGaleria()">Sim</button>
+      <button onclick="reiniciar()">Não</button>
+    </div>
+  </div>
+
+  <div class="galeria" id="galeria" style="display:none;">
+    <div class="slider-container">
+      <div class="slider" id="slider">
+        <div class="slide">
+          <img src="obstined4.jpg" alt="XXXX">
+          <div class="text-overlay">@0bstined</div>
+        </div>
+        <div class="slide">
+          <img src="obstned3.jpg" alt="XXXX">
+          <div class="text-overlay">✯</div>
+        </div>
+        <div class="slide">
+          <img src="Obstned.jpg" alt="XXXXX">
+          <div class="text-overlay">.snlxz</div>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <button onclick="prevSlide()">⟨ Anterior</button>
+      <button onclick="nextSlide()">Próximo ⟩</button>
+    </div>
+
+    <div class="social-icons">
+      <a href="https://instagram.com/0bstined" target="_blank">
+        <img src="iconinsta.png" alt="Instagram" class="social-icon">
+      </a>
+      <a href="https://tiktok.com/@.snlxz" target="_blank">
+        <img src="tiktok.png" alt="TikTok" class="social-icon">
+      </a>
+    </div>
+  </div>
+
+  <footer class="rodape">
+    © 2025 Ghostware - Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.addEventListener('click', function() {
+      const audio = document.getElementById('musica');
+      audio.play();
+    });
+
+    function mostrarProxima(id) {
+      const atual = document.querySelector('.pergunta:not([style*="display: none"])');
+      if (atual) atual.style.display = 'none';
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function mostrarGaleria() {
+      document.getElementById('tela-perguntas').style.display = 'none';
+      document.getElementById('galeria').style.display = 'block';
+      showSlide(currentSlide);
+    }
+
+    function reiniciar() {
+      document.getElementById('pergunta3').style.display = 'none';
+      document.getElementById('pergunta1').style.display = 'block';
+    }
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      currentSlide = (index + totalSlides) % totalSlides;
+
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+
+        if (i === currentSlide || i === (currentSlide - 1 + totalSlides) % totalSlides || i === (currentSlide + 1) % totalSlides) {
+          slide.style.display = 'block';
+        }
+      });
+
+      slides[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+  </script>
+</body>
+</html>

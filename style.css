@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden;
+  background-color: #111; 
+  color: #ffffff;
+}
+
+
+.perguntas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+}
+
+.pergunta h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.pergunta button {
+  background: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+  color: rgb(0, 0, 0);
+}
+
+.pergunta button:hover {
+  background: #ff85c1;
+}
+
+.galeria {
+  padding: 30px;
+  text-align: center;
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 30%;
+  opacity: 0.4;
+  filter: blur(4px);
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+  position: relative;
+  display: none;
+}
+
+.slide.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+.slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 70%;
+  font-size: 1.4em;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.controls button {
+  background: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controls button:hover {
+  background: #ff85c1;
+}
+
+/* Corações subindo */
+.coracoes {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.coracao {
+  position: absolute;
+  bottom: -30px;
+  width: 20px;
+  height: 20px;
+  background: url('coracao.png') no-repeat center;
+  background-size: contain;
+  animation: subir 10s linear infinite;
+  opacity: 0.8;
+}
+
+.coracao:nth-child(2) { animation-delay: 2s; width: 25px; height: 25px; }
+.coracao:nth-child(3) { animation-delay: 4s; width: 22px; height: 22px; }
+.coracao:nth-child(4) { animation-delay: 6s; width: 18px; height: 18px; }
+.coracao:nth-child(5) { animation-delay: 8s; width: 28px; height: 28px; }
+
+@keyframes subir {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+/* Balões flutuando */
+.baloes {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.balao {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 60px;
+  background: url('caveuira.png') no-repeat center;
+  background-size: contain;
+  animation: subirBalao 12s linear infinite;
+  opacity: 0.8;
+}
+
+.balao:nth-child(2) {
+  animation-delay: 4s;
+  width: 50px;
+  height: 70px;
+}
+.balao:nth-child(3) {
+  animation-delay: 7s;
+  width: 35px;
+  height: 55px;
+}
+
+@keyframes subirBalao {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .slide img {
+    height: 300px;
+  }
+  .text-overlay {
+    font-size: 1em;
+    padding: 12px;
+  }
+  .pergunta h2 {
+    font-size: 1.5em;
+  }
+  .pergunta button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  .controls button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+.balao:nth-child(1) { animation-delay: 0s; width: 40px; height: 60px; }
+.balao:nth-child(2) { animation-delay: 2s; width: 35px; height: 55px; }
+.balao:nth-child(3) { animation-delay: 4s; width: 50px; height: 70px; }
+.balao:nth-child(4) { animation-delay: 1s; width: 38px; height: 60px; }
+.balao:nth-child(5) { animation-delay: 3s; width: 45px; height: 65px; }
+.balao:nth-child(6) { animation-delay: 5s; width: 36px; height: 58px; }
+.balao:nth-child(7) { animation-delay: 6s; width: 48px; height: 68px; }
+.balao:nth-child(8) { animation-delay: 7s; width: 42px; height: 62px; }
+.balao:nth-child(9) { animation-delay: 8s; width: 34px; height: 52px; }
+.balao:nth-child(10){ animation-delay: 9s; width: 44px; height: 64px; }
+
+.rodape {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 14px;
+  z-index: 2;
+  pointer-events: none;
+}
+.galeria {
+  padding: 30px;
+  text-align: center;
+}
+
+.slider-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ff69b4;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icon {
+  width: 40px; /* Ajuste o tamanho conforme necessário */
+  margin: 0 10px;
+}
